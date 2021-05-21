@@ -17,6 +17,8 @@ Description      : myNM.h
 #include <math.h>
 #include "myMatrix.h"
 
+void tempFunc(int m);
+
 
 // Return the dy/dx results for the input data. (truncation error: O(h^2))
 Matrix	gradient(Matrix _x, Matrix _y);

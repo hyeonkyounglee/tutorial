@@ -10,6 +10,11 @@ Description      : myNM.cpp
 ----------------------------------------------------------------*/
 
 #include "myNM.h"
+
+void tempFunc(int m) {
+	printf("Hello");
+}
+
 // Return the dy/dx results for the input data. (truncation error: O(h^2))
 // Move this function to myNM.h and myNM.cpp
 Matrix	gradient(Matrix _x, Matrix _y) {
