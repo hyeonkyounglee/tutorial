@@ -1,8 +1,8 @@
 /*----------------------------------------------------------------\
 @ Numerical Methods by Young-Keun Kim - Handong Global University
 
-Author           : [YOUR NAME]
-Created          : 26-03-2018
+Author           : Hyeonkyoung Lee
+Created          : 02-04-2021
 Modified         : 18-03-2021
 Language/ver     : C++ in MSVS2019
 
@@ -55,11 +55,19 @@ extern	Matrix	eye(int _rows, int _cols);
 // Create Transpose matrix
 extern	Matrix	transpose(Matrix _A);
 
+extern Matrix multi(Matrix _A, Matrix _b);
+
+extern Matrix sumMat(Matrix _A, Matrix _B);
+
+extern Matrix subMat(Matrix _A, Matrix _B);
+
 // Copy matrix
 extern	Matrix	copyMat(Matrix _A);
 
 // Copy matrix Elements from A to B
 extern	void	copyVal(Matrix _A, Matrix _B);
+
+double norm(Matrix _v);
 
 
 #endif

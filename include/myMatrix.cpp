@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------\
 @ Numerical Methods by Young-Keun Kim - Handong Global University
 
-Author           : [YOUR NAME]
+Author           : Hyeonkyoung Lee
 Created          : 26-03-2018
 Modified         : 18-03-2021
 Language/ver     : C++ in MSVS2019
@@ -99,9 +99,11 @@ void	printMat(Matrix _A, const char* _name)
 // initialization of Matrix elements
 void	initMat(Matrix _A, double _val)
 {
-	for (int i = 0; i < _A.rows; i++)
-		for (int j = 0; j < _A.cols; j++)
+	for (int i = 0; i < _A.rows; i++) {
+		for (int j = 0; j < _A.cols; j++) {
 			_A.at[i][j] = _val;
+		}
+	}
 }
 
 // Create matrix of all zeros
@@ -109,6 +111,68 @@ Matrix	zeros(int _rows, int _cols)
 {
 	Matrix Out = createMat(_rows, _cols);
 	initMat(Out, 0);
-
 	return Out;
+}
+
+Matrix	transpose(Matrix _A) {
+	Matrix Out = createMat(_A.cols, _A.rows);
+	for (int i = 0; i < _A.cols; i++) {
+		for (int j = 0; j < _A.rows; j++) {
+			Out.at[i][j] = _A.at[j][i];
+		}
+	}
+	return Out;
+}
+
+//multiply matrix
+Matrix multi(Matrix _A, Matrix _b)
+{
+	Matrix Out = createMat(_A.rows, _b.cols);
+	for (int k = 0; k < _A.rows; k++) {
+		for (int i = 0; i < _b.cols; i++) {
+			double sum = 0;
+			for (int j = 0; j < _A.cols; j++) {
+				sum += _A.at[k][j] * _b.at[j][i];
+			}
+			Out.at[k][i] = sum;
+		}
+	}
+	return Out;
+}
+
+Matrix sumMat(Matrix _A, Matrix _B) {
+	Matrix Out = createMat(_A.rows, _A.cols);
+	for (int i = 0; i < _A.rows; i++) {
+		for (int j = 0; j < _A.cols; j++) {
+			Out.at[i][j] = _A.at[i][j] + _B.at[i][j];
+		}
+	}
+	return Out;
+}
+
+Matrix subMat(Matrix _A, Matrix _B) {
+	Matrix Out = createMat(_A.rows, _A.cols);
+	for (int i = 0; i < _A.rows; i++) {
+		for (int j = 0; j < _A.cols; j++) {
+			Out.at[i][j] = _A.at[i][j] - _B.at[i][j];
+		}
+	}
+	return Out;
+}
+
+void	copyVal(Matrix _A, Matrix _B) {
+	for (int i = 0; i < _A.rows; i++) {
+		for (int j = 0; j < _A.cols; j++) {
+			_B.at[i][j] = _A.at[i][j];
+		}
+	}
+}
+
+double norm(Matrix _v) {
+	double c = 0;
+	for (int i = 0; i < _v.rows; i++) {
+		c += pow(_v.at[i][0], 2);
+	}
+	c = sqrt(c);
+	return c;
 }
